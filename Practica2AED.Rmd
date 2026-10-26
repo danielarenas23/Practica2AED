@@ -362,3 +362,45 @@ rios
 ```{r}
 ggsave('results/Ejercicio5.pdf', rios)
 ```
+
+# Ejercicio 7
+
+### Carga el fichero `weatherAUS_distributions.RData`.
+
+```{r}
+load('data/weatherAUS_distributions.RData')
+```
+
+### Crea un gráfico en el que estén los boxplots de la variable
+`MinTemp` para cada uno de los años presentes en la variable
+`Year` del dataset.
+
+```{r}
+ggplot(data=ds, aes(x=factor(Year), y=MinTemp)) + geom_boxplot()
+
+```
+
+### Crea un gráfico en el que estén los gráficos de violín de la
+variable `MaxTemp` para cada uno de los años presentes en la
+variable `Year` del dataset. Añade en el mismo gráfico una
+capa de etiquetas de título (Distribución de temperaturas máximas por
+año), eje x (Año) y eje y (Temperatura (ºC)). Colorea el interior
+de los violines según la la variable `Year`.
+
+```{r}
+ggplot(data=ds, aes(x=factor(Year), y=MaxTemp, fill=factor(Year))) + geom_violin() + labs(title='Distribución de temperaturas máximas por año', x='Año', y='Temperatura (ºC)')
+```
+
+### En el gráfico anterior elimina la leyenda y coloca los años en el eje x a 45 grados de inclinación.
+Busca información sobre cómo hacer esto.
+
+```{r}
+violines<- ggplot(data=ds, aes(x=factor(Year), y=MaxTemp, fill=factor(Year))) + geom_violin() + labs(title='Distribución de temperaturas máximas por año', x='Año', y='Temperatura (ºC)') + theme(legend.position='None', axis.text.x=element_text(angle=45, hjust=1))
+violines
+```
+
+### Almacena en formato **pdf** el gráfico resultante en un fichero denominado `Ejercicio7.pdf`.
+
+```{r}
+ggsave('results/Ejercicio7.pdf', violines)
+```
