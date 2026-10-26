@@ -256,3 +256,52 @@ fichero denominado `Ejercicio3.pdf`.
 ```{r}
 ggsave('results/Ejercicio3.pdf', graficofinal)
 ```
+
+# Ejercicio 4
+
+### Carga el fichero `Ejercicio4_Data.Rdata`. Examina las
+variables que tiene dicho dataset.
+
+```{r}
+load('data/Ejercicio4_Data.Rdata')
+str(DatosEjer4)
+```
+
+### Representa un gráfico de puntos, en el que se muestre la fecha en el
+eje x y las ventas en el eje y. Queremos que los datos de cada
+fabricante sean de un color distinto. ¿Es este gráfico válido para
+evaluar la evolución de las ventas de cada fabricante?
+
+```{r}
+ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) +geom_point()
+```
+
+No lo es, ya que al visualizar solo los puntos, es díficil ver a simple vista el orden cronológico. Esto se solventa usando geom_line().
+
+### Representa un gráfico como el anterior en el que se muestre la línea que une los puntos que antes has representado.
+
+```{r}
+ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) + geom_point() +geom_line()
+```
+
+### Modifica el gráfico anterior para que la tendencia de cada
+fabricante este trazada con un tipo de línea diferente.
+
+```{r}
+ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) + geom_point() +geom_line(aes(linetype=Fabricante))
+```
+
+### Añade el siguiente título al gráfico *“Ventas mensuales de
+diferentes compañías tecnológicas”*.
+
+```{r}
+graficoventas<- ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) + geom_point() +geom_line(aes(linetype=Fabricante)) + ggtitle('Ventas mensuales de
+diferentes compañías tecnológicas')
+graficoventas
+```
+
+### Almacena en formato **pdf** el gráfico resultante en un fichero denominado `Ejercicio4.pdf`.
+
+```{r}
+ggsave('results/Ejercicio4.pdf', graficoventas)
+```
