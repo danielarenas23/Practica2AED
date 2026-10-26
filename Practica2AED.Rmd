@@ -60,6 +60,7 @@ pacman::p_load(char=packages)
 # Ejercicio 1
 
 ### Carga el fichero `weatherAUS.RData` utilizando lo
+
 aprendido en la práctica 1.
 
 ```{r}
@@ -69,19 +70,16 @@ load('data/weatherAUS.Rdata')
 ```
 
 ### Crea un objeto ggplot denominado `grafico1` en el que
-esté definido el conjunto de datos `ds` alojado en el fichero
-`weatherAUS.RData` y un *aesthetics* en el que en el
-eje x esté definida la variable
-`MinTemp` y en el eje y
-esté definida la variable `MaxTemp`.
+
+esté definido el conjunto de datos `ds` alojado en el fichero `weatherAUS.RData` y un *aesthetics* en el que en el eje x esté definida la variable `MinTemp` y en el eje y esté definida la variable `MaxTemp`.
 
 ```{r}
 grafico1<- ggplot(data=ds , aes(x=MinTemp, y=MaxTemp))
 ```
 
 ### Añade una capa que defina el objeto geométrico necesario para
-construir un gráfico de dispersión de las variables `MinTemp`
-y `MaxTemp`.
+
+construir un gráfico de dispersión de las variables `MinTemp` y `MaxTemp`.
 
 ```{r}
 grafico1<- grafico1 + geom_point()
@@ -89,12 +87,8 @@ grafico1
 ```
 
 ### Genera ahora el mismo gráfico y almacénalo en `grafico2`
-pero define el *aesthetics* para visualizar las variables
-`MinTemp` y `MaxTemp` en los ejes de la gráfica y
-la variable categórica `RainTomorrow` como el color. A partir
-del objeto `grafico2`, representa un gráfico de dispersión en
-el que se muestren los puntos con el color del punto correspondiente a
-la variable `RainTomorrow`.
+
+pero define el *aesthetics* para visualizar las variables `MinTemp` y `MaxTemp` en los ejes de la gráfica y la variable categórica `RainTomorrow` como el color. A partir del objeto `grafico2`, representa un gráfico de dispersión en el que se muestren los puntos con el color del punto correspondiente a la variable `RainTomorrow`.
 
 ```{r}
 grafico2<- ggplot(ds,aes(x=MinTemp, y=MaxTemp, color=RainTomorrow))
@@ -103,6 +97,7 @@ grafico2
 ```
 
 ### Añade a `grafico2` una capa para incluir un título con
+
 **ggtitle()** y almacénalo en `grafico3`.
 
 ```{r}
@@ -111,6 +106,7 @@ grafico3
 ```
 
 ### Almacena en formato **pdf** el gráfico resultante en un
+
 fichero denominado `Ejercicio1.pdf`.
 
 ```{r}
@@ -120,8 +116,8 @@ ggsave('results/Ejercicio1.pdf', plot=grafico3)
 # Ejercicio 2
 
 ### Utilizando ggplot haz un grafico de dispersión en el que representes
-las variables `Temp9am` y `Pressure9am` en los
-ejes x e y respectivamente.
+
+las variables `Temp9am` y `Pressure9am` en los ejes x e y respectivamente.
 
 ```{r}
 ggplot(data=ds, aes(x=Temp9am, y=Pressure9am)) + geom_point()
@@ -129,17 +125,16 @@ ggplot(data=ds, aes(x=Temp9am, y=Pressure9am)) + geom_point()
 ```
 
 ### Modifica el gráfico anterior para incluir información categórica
-proporcionada por la variable `RainToday` con la forma del
-punto.
+
+proporcionada por la variable `RainToday` con la forma del punto.
 
 ```{r}
 ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, shape=RainToday) ) + geom_point()
 ```
 
 ### Modifica el gráfico anterior para incluir información categórica
-proporcionada por la variable `RainToday` con el color del
-punto. ¿Con qué representación (color o forma) se observa mejor la
-información que introduce la variable `RainToday`?
+
+proporcionada por la variable `RainToday` con el color del punto. ¿Con qué representación (color o forma) se observa mejor la información que introduce la variable `RainToday`?
 
 ```{r}
 ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point()
@@ -148,8 +143,8 @@ ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point()
 Se ve mucho más claro con el **color**, ya que ayuda a distinguir la variable RainToday de un vistazo, mientras que usando **shape** , se solapan las formas y no se distingue con facilidad.
 
 ### Añade títulos explicativos al gráfico anterior (debe aparece un
-título, subtítulo, leyendas e información de las variables representadas
-en los ejes).
+
+título, subtítulo, leyendas e información de las variables representadas en los ejes).
 
 ```{r}
 grafi<- ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point() + labs(title='Presión vs Temperatura', subtitle= '(9AM)', x=' Temp/ ºC', y= 'Presión/ Pa', color= '¿Llueve?')
@@ -157,6 +152,7 @@ grafi
 ```
 
 ### Almacena en formato **pdf** el gráfico resultante en un
+
 fichero denominado `Ejercicio2.pdf`.
 
 ```{r}
@@ -166,6 +162,7 @@ ggsave('results/Ejercicio2.pdf', plot= grafi)
 # Ejercicio 3
 
 ### Carga el fichero `iris.tidy.Rdata` utilizando lo
+
 aprendido en la práctica 1.
 
 ```{r}
@@ -174,6 +171,7 @@ load('data/iris_tidy.Rdata')
 ```
 
 ### Utiliza la función **str()** para ver qué variables
+
 contiene el dataset.
 
 ```{r}
@@ -181,11 +179,8 @@ str(iris.tidy)
 ```
 
 ### Crea un objeto ggplot denominado `iris.grafico1` en el
-que esté definido el conjunto de datos `iris.tidy` alojado en
-el fichero `iris.tidy.RData` y un *aesthetics* en el
-que en el eje x esté definida la
-variable `Species` y en el eje y esté definida la variable
-`Value`.
+
+que esté definido el conjunto de datos `iris.tidy` alojado en el fichero `iris.tidy.RData` y un *aesthetics* en el que en el eje x esté definida la variable `Species` y en el eje y esté definida la variable `Value`.
 
 ```{r}
 
@@ -194,8 +189,8 @@ iris.grafico1<-ggplot(data=iris.tidy, aes(x=Species, y=Value))
 ```
 
 ### Añade una capa que defina el objeto geométrico necesario para
-construir un gráfico de dispersión de las variables `Species`
-y `Value`.
+
+construir un gráfico de dispersión de las variables `Species` y `Value`.
 
 ```{r}
 iris.grafico1<- iris.grafico1+geom_point()
@@ -203,12 +198,8 @@ iris.grafico1
 ```
 
 ### Modifica el *aesthetics* de `iris.grafico1` para
-visualizar la variable categórica `Part` y almacénalo en
-`iris.grafico2`. A partir del objeto
-`iris.grafico2`, representa un gráfico de dispersión en el
-que se muestren los puntos dados por las variables `Species`
-y `Value`, y el color del punto se corresponda con el valor
-de la variable `Part`.
+
+visualizar la variable categórica `Part` y almacénalo en `iris.grafico2`. A partir del objeto `iris.grafico2`, representa un gráfico de dispersión en el que se muestren los puntos dados por las variables `Species` y `Value`, y el color del punto se corresponda con el valor de la variable `Part`.
 
 ```{r}
 iris.grafico2<- ggplot(data=iris.tidy, aes(x=Species, y=Value, color=Part))+ geom_point()
@@ -216,12 +207,8 @@ iris.grafico2
 ```
 
 ### Incluye información de la variable `Measure` haciendo dos
-gráficos de dispersión (dispuestos en filas) con
-**facet_grid()**, como en el apartado de introducción, para
-los dos valores que toma la variable `Measure`. Prueba a
-cambiar la disposición de los gráficos para que sea en columnas ¿Qué
-disposición, en filas o en columnas, permite comparar mejor los valores
-de las dos variables?
+
+gráficos de dispersión (dispuestos en filas) con **facet_grid()**, como en el apartado de introducción, para los dos valores que toma la variable `Measure`. Prueba a cambiar la disposición de los gráficos para que sea en columnas ¿Qué disposición, en filas o en columnas, permite comparar mejor los valores de las dos variables?
 
 En filas:
 
@@ -239,8 +226,8 @@ iris.grafico2 + facet_grid( .~Measure )
 Bajo mi punto de vista, se compara mejor con la disposición de columnas, se ve más limpio y menos achatado.
 
 ### Cambia ahora la capa **geom_point()** del gráfico
-anterior por la capa **geom_jitter()**. ¿Qué diferencia
-observas?
+
+anterior por la capa **geom_jitter()**. ¿Qué diferencia observas?
 
 ```{r}
 graficofinal<- ggplot(data=iris.tidy, aes(x=Species, y=Value, color=Part))+ geom_jitter()+ facet_grid( .~Measure )
@@ -251,6 +238,7 @@ graficofinal
 Los puntos se encuentran desplazados, ya que el geom_jitter() evita el overplotting introduciendo ruido.
 
 ### Almacena en formato **pdf** el gráfico resultante en un
+
 fichero denominado `Ejercicio3.pdf`.
 
 ```{r}
@@ -260,6 +248,7 @@ ggsave('results/Ejercicio3.pdf', graficofinal)
 # Ejercicio 4
 
 ### Carga el fichero `Ejercicio4_Data.Rdata`. Examina las
+
 variables que tiene dicho dataset.
 
 ```{r}
@@ -268,9 +257,8 @@ str(DatosEjer4)
 ```
 
 ### Representa un gráfico de puntos, en el que se muestre la fecha en el
-eje x y las ventas en el eje y. Queremos que los datos de cada
-fabricante sean de un color distinto. ¿Es este gráfico válido para
-evaluar la evolución de las ventas de cada fabricante?
+
+eje x y las ventas en el eje y. Queremos que los datos de cada fabricante sean de un color distinto. ¿Es este gráfico válido para evaluar la evolución de las ventas de cada fabricante?
 
 ```{r}
 ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) +geom_point()
@@ -285,14 +273,16 @@ ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) + geom_point()
 ```
 
 ### Modifica el gráfico anterior para que la tendencia de cada
+
 fabricante este trazada con un tipo de línea diferente.
 
 ```{r}
 ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) + geom_point() +geom_line(aes(linetype=Fabricante))
 ```
 
-### Añade el siguiente título al gráfico *“Ventas mensuales de
-diferentes compañías tecnológicas”*.
+### Añade el siguiente título al gráfico \*“Ventas mensuales de
+
+diferentes compañías tecnológicas”\*.
 
 ```{r}
 graficoventas<- ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) + geom_point() +geom_line(aes(linetype=Fabricante)) + ggtitle('Ventas mensuales de
@@ -304,4 +294,43 @@ graficoventas
 
 ```{r}
 ggsave('results/Ejercicio4.pdf', graficoventas)
+```
+
+# Ejercicio 5
+
+### Carga el fichero `Experimento.Rdata`. Examina las variables que tiene dicho dataset.
+
+```{r}
+load('data/Experimento.Rdata')
+str(Experimento)
+```
+
+### Representa un gráfico de puntos, en el que se muestre la `Dosis` en el eje x y la `Altura` en el eje y. Queremos que los datos de cada `Complemento` se representen en una línea diferente con diferentes trazos. Hazlo incluyendo las opciones de tipo de línea y forma del punto dentro del **aes()** de la capa **ggplot**.
+
+```{r}
+ggplot(data=Experimento, aes(x=Dosis, y=Altura, linetype = Complemento, shape=Complemento)) + geom_point() + geom_line()
+```
+
+### Crea otro gráfico añadiendo al gráfico anterior barras de error en cada punto. El error viene dado por la variable
+`Error_Altura`.
+
+```{r}
+ggplot(data=Experimento, aes(x=Dosis, y=Altura, linetype = Complemento, shape=Complemento)) + geom_point() + geom_line() + geom_errorbar(aes(ymin=Altura - Error_Altura, ymax=Altura+ Error_Altura),width=0.1)
+```
+
+### Crea otro gráfico, como el anterior (**idéntico**),
+pero en este caso no puedes incluir el tipo de línea y el tipo de punto
+en aes() de la capa ggplot. Además queremos que la paleta de colores sea
+en tonos de rojos (`scale_color_brewer`).
+
+```{r}
+graficoExperimento<-  ggplot(data=Experimento,aes(x=Dosis, y=Altura, color=Complemento)) + geom_line(aes(linetype=Complemento))+ geom_point(aes(shape=Complemento))+geom_errorbar(aes(ymin=Altura - Error_Altura, ymax=Altura+ Error_Altura),width=0.1) + scale_color_brewer(palette='Reds')
+graficoExperimento
+```
+
+### Almacena en formato **pdf** el gráfico resultante en un
+fichero denominado `Ejercicio5.pdf`
+
+```{r}
+ggsave('results/Ejercicio5.pdf', graficoExperimento)
 ```
