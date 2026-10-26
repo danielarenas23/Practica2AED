@@ -163,4 +163,96 @@ fichero denominado `Ejercicio2.pdf`.
 ggsave('results/Ejercicio2.pdf', plot= grafi)
 ```
 
-# 
+# Ejercicio 3
+
+### Carga el fichero `iris.tidy.Rdata` utilizando lo
+aprendido en la práctica 1.
+
+```{r}
+load('data/iris_tidy.Rdata')
+
+```
+
+### Utiliza la función **str()** para ver qué variables
+contiene el dataset.
+
+```{r}
+str(iris.tidy)
+```
+
+### Crea un objeto ggplot denominado `iris.grafico1` en el
+que esté definido el conjunto de datos `iris.tidy` alojado en
+el fichero `iris.tidy.RData` y un *aesthetics* en el
+que en el eje x esté definida la
+variable `Species` y en el eje y esté definida la variable
+`Value`.
+
+```{r}
+
+iris.grafico1<-ggplot(data=iris.tidy, aes(x=Species, y=Value))
+
+```
+
+### Añade una capa que defina el objeto geométrico necesario para
+construir un gráfico de dispersión de las variables `Species`
+y `Value`.
+
+```{r}
+iris.grafico1<- iris.grafico1+geom_point()
+iris.grafico1
+```
+
+### Modifica el *aesthetics* de `iris.grafico1` para
+visualizar la variable categórica `Part` y almacénalo en
+`iris.grafico2`. A partir del objeto
+`iris.grafico2`, representa un gráfico de dispersión en el
+que se muestren los puntos dados por las variables `Species`
+y `Value`, y el color del punto se corresponda con el valor
+de la variable `Part`.
+
+```{r}
+iris.grafico2<- ggplot(data=iris.tidy, aes(x=Species, y=Value, color=Part))+ geom_point()
+iris.grafico2
+```
+
+### Incluye información de la variable `Measure` haciendo dos
+gráficos de dispersión (dispuestos en filas) con
+**facet_grid()**, como en el apartado de introducción, para
+los dos valores que toma la variable `Measure`. Prueba a
+cambiar la disposición de los gráficos para que sea en columnas ¿Qué
+disposición, en filas o en columnas, permite comparar mejor los valores
+de las dos variables?
+
+En filas:
+
+```{r}
+
+iris.grafico2 + facet_grid(Measure ~ .)
+```
+
+En columnas:
+
+```{r}
+iris.grafico2 + facet_grid( .~Measure )
+```
+
+Bajo mi punto de vista, se compara mejor con la disposición de columnas, se ve más limpio y menos achatado.
+
+### Cambia ahora la capa **geom_point()** del gráfico
+anterior por la capa **geom_jitter()**. ¿Qué diferencia
+observas?
+
+```{r}
+graficofinal<- ggplot(data=iris.tidy, aes(x=Species, y=Value, color=Part))+ geom_jitter()+ facet_grid( .~Measure )
+graficofinal
+
+```
+
+Los puntos se encuentran desplazados, ya que el geom_jitter() evita el overplotting introduciendo ruido.
+
+### Almacena en formato **pdf** el gráfico resultante en un
+fichero denominado `Ejercicio3.pdf`.
+
+```{r}
+ggsave('results/Ejercicio3.pdf', graficofinal)
+```
