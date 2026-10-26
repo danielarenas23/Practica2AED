@@ -116,3 +116,51 @@ fichero denominado `Ejercicio1.pdf`.
 ```{r}
 ggsave('results/Ejercicio1.pdf', plot=grafico3)
 ```
+
+# Ejercicio 2
+
+### Utilizando ggplot haz un grafico de dispersión en el que representes
+las variables `Temp9am` y `Pressure9am` en los
+ejes x e y respectivamente.
+
+```{r}
+ggplot(data=ds, aes(x=Temp9am, y=Pressure9am)) + geom_point()
+
+```
+
+### Modifica el gráfico anterior para incluir información categórica
+proporcionada por la variable `RainToday` con la forma del
+punto.
+
+```{r}
+ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, shape=RainToday) ) + geom_point()
+```
+
+### Modifica el gráfico anterior para incluir información categórica
+proporcionada por la variable `RainToday` con el color del
+punto. ¿Con qué representación (color o forma) se observa mejor la
+información que introduce la variable `RainToday`?
+
+```{r}
+ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point()
+```
+
+Se ve mucho más claro con el **color**, ya que ayuda a distinguir la variable RainToday de un vistazo, mientras que usando **shape** , se solapan las formas y no se distingue con facilidad.
+
+### Añade títulos explicativos al gráfico anterior (debe aparece un
+título, subtítulo, leyendas e información de las variables representadas
+en los ejes).
+
+```{r}
+grafi<- ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point() + labs(title='Presión vs Temperatura', subtitle= '(9AM)', x=' Temp/ ºC', y= 'Presión/ Pa', color= '¿Llueve?')
+grafi
+```
+
+### Almacena en formato **pdf** el gráfico resultante en un
+fichero denominado `Ejercicio2.pdf`.
+
+```{r}
+ggsave('results/Ejercicio2.pdf', plot= grafi)
+```
+
+# 
