@@ -312,6 +312,7 @@ ggplot(data=Experimento, aes(x=Dosis, y=Altura, linetype = Complemento, shape=Co
 ```
 
 ### Crea otro gráfico añadiendo al gráfico anterior barras de error en cada punto. El error viene dado por la variable
+
 `Error_Altura`.
 
 ```{r}
@@ -319,9 +320,8 @@ ggplot(data=Experimento, aes(x=Dosis, y=Altura, linetype = Complemento, shape=Co
 ```
 
 ### Crea otro gráfico, como el anterior (**idéntico**),
-pero en este caso no puedes incluir el tipo de línea y el tipo de punto
-en aes() de la capa ggplot. Además queremos que la paleta de colores sea
-en tonos de rojos (`scale_color_brewer`).
+
+pero en este caso no puedes incluir el tipo de línea y el tipo de punto en aes() de la capa ggplot. Además queremos que la paleta de colores sea en tonos de rojos (`scale_color_brewer`).
 
 ```{r}
 graficoExperimento<-  ggplot(data=Experimento,aes(x=Dosis, y=Altura, color=Complemento)) + geom_line(aes(linetype=Complemento))+ geom_point(aes(shape=Complemento))+geom_errorbar(aes(ymin=Altura - Error_Altura, ymax=Altura+ Error_Altura),width=0.1) + scale_color_brewer(palette='Reds')
@@ -329,8 +329,36 @@ graficoExperimento
 ```
 
 ### Almacena en formato **pdf** el gráfico resultante en un
+
 fichero denominado `Ejercicio5.pdf`
 
 ```{r}
 ggsave('results/Ejercicio5.pdf', graficoExperimento)
+```
+
+# Ejercicio 6
+
+El fichero `iceRiver.RData` contiene información del caudal de dos ríos islandeses medidos a diarios durante 3 años. Puedes obtener información detallada de las variables usando `> ?tseries::ice.river`
+
+### Representa el caudal de ambos ríos a lo largo del período
+
+considerado coloreando una serie (`flow.vat`) en color rojo y la otra en color azul.
+
+```{r}
+load('data/iceRiver.RData')
+rios<- ggplot(data=ice.river.df, aes(x=time)) + geom_line(aes(y=flow.vat),color='red')+ geom_line(aes(y=flow.jok),color='blue')
+rios
+```
+
+### Utiliza la función `labs` para enriquecer el gráfico.
+
+```{r}
+rios<-rios + labs(title='Evolución caudal ríos Islandia', x='Fecha', y='Caudal (m³/s)', caption='Río Vat en rojo, Río Jok en azul')
+rios
+```
+
+### Almacena en formato **pdf** el gráfico resultante en un fichero denominado `Ejercicio5.pdf`.
+
+```{r}
+ggsave('results/Ejercicio5.pdf', rios)
 ```
