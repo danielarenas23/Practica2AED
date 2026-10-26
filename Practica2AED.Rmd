@@ -59,9 +59,7 @@ pacman::p_load(char=packages)
 
 # Ejercicio 1
 
-### Carga el fichero `weatherAUS.RData` utilizando lo
-
-aprendido en la práctica 1.
+### Carga el fichero `weatherAUS.RData` utilizando lo aprendido en la práctica 1.
 
 ```{r}
 
@@ -69,26 +67,20 @@ load('data/weatherAUS.Rdata')
 
 ```
 
-### Crea un objeto ggplot denominado `grafico1` en el que
-
-esté definido el conjunto de datos `ds` alojado en el fichero `weatherAUS.RData` y un *aesthetics* en el que en el eje x esté definida la variable `MinTemp` y en el eje y esté definida la variable `MaxTemp`.
+### Crea un objeto ggplot denominado `grafico1` en el que esté definido el conjunto de datos `ds` alojado en el fichero `weatherAUS.RData` y un *aesthetics* en el que en el eje x esté definida la variable `MinTemp` y en el eje y esté definida la variable `MaxTemp`.
 
 ```{r}
 grafico1<- ggplot(data=ds , aes(x=MinTemp, y=MaxTemp))
 ```
 
-### Añade una capa que defina el objeto geométrico necesario para
-
-construir un gráfico de dispersión de las variables `MinTemp` y `MaxTemp`.
+### Añade una capa que defina el objeto geométrico necesario para construir un gráfico de dispersión de las variables `MinTemp` y `MaxTemp`.
 
 ```{r}
 grafico1<- grafico1 + geom_point()
 grafico1
 ```
 
-### Genera ahora el mismo gráfico y almacénalo en `grafico2`
-
-pero define el *aesthetics* para visualizar las variables `MinTemp` y `MaxTemp` en los ejes de la gráfica y la variable categórica `RainTomorrow` como el color. A partir del objeto `grafico2`, representa un gráfico de dispersión en el que se muestren los puntos con el color del punto correspondiente a la variable `RainTomorrow`.
+### Genera ahora el mismo gráfico y almacénalo en `grafico2`pero define el *aesthetics* para visualizar las variables `MinTemp` y `MaxTemp` en los ejes de la gráfica y la variable categórica `RainTomorrow` como el color. A partir del objeto `grafico2`, representa un gráfico de dispersión en el que se muestren los puntos con el color del punto correspondiente a la variable `RainTomorrow`.
 
 ```{r}
 grafico2<- ggplot(ds,aes(x=MinTemp, y=MaxTemp, color=RainTomorrow))
@@ -96,18 +88,14 @@ grafico2<- grafico2 + geom_point()
 grafico2
 ```
 
-### Añade a `grafico2` una capa para incluir un título con
-
-**ggtitle()** y almacénalo en `grafico3`.
+### Añade a `grafico2` una capa para incluir un título con **ggtitle()** y almacénalo en `grafico3`.
 
 ```{r}
 grafico3<- grafico2 + ggtitle('Tmax vs Tmin')
 grafico3
 ```
 
-### Almacena en formato **pdf** el gráfico resultante en un
-
-fichero denominado `Ejercicio1.pdf`.
+### Almacena en formato **pdf** el gráfico resultante en un fichero denominado `Ejercicio1.pdf`.
 
 ```{r}
 ggsave('results/Ejercicio1.pdf', plot=grafico3)
@@ -115,26 +103,20 @@ ggsave('results/Ejercicio1.pdf', plot=grafico3)
 
 # Ejercicio 2
 
-### Utilizando ggplot haz un grafico de dispersión en el que representes
-
-las variables `Temp9am` y `Pressure9am` en los ejes x e y respectivamente.
+### Utilizando ggplot haz un grafico de dispersión en el que representes las variables `Temp9am` y `Pressure9am` en los ejes x e y respectivamente.
 
 ```{r}
 ggplot(data=ds, aes(x=Temp9am, y=Pressure9am)) + geom_point()
 
 ```
 
-### Modifica el gráfico anterior para incluir información categórica
-
-proporcionada por la variable `RainToday` con la forma del punto.
+### Modifica el gráfico anterior para incluir información categórica proporcionada por la variable `RainToday` con la forma del punto.
 
 ```{r}
 ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, shape=RainToday) ) + geom_point()
 ```
 
-### Modifica el gráfico anterior para incluir información categórica
-
-proporcionada por la variable `RainToday` con el color del punto. ¿Con qué representación (color o forma) se observa mejor la información que introduce la variable `RainToday`?
+### Modifica el gráfico anterior para incluir información categórica proporcionada por la variable `RainToday` con el color del punto. ¿Con qué representación (color o forma) se observa mejor la información que introduce la variable `RainToday`?
 
 ```{r}
 ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point()
@@ -142,18 +124,14 @@ ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point()
 
 Se ve mucho más claro con el **color**, ya que ayuda a distinguir la variable RainToday de un vistazo, mientras que usando **shape** , se solapan las formas y no se distingue con facilidad.
 
-### Añade títulos explicativos al gráfico anterior (debe aparece un
-
-título, subtítulo, leyendas e información de las variables representadas en los ejes).
+### Añade títulos explicativos al gráfico anterior (debe aparece un título, subtítulo, leyendas e información de las variables representadas en los ejes).
 
 ```{r}
 grafi<- ggplot(data=ds,aes(x=Temp9am, y=Pressure9am, color=RainToday) ) + geom_point() + labs(title='Presión vs Temperatura', subtitle= '(9AM)', x=' Temp/ ºC', y= 'Presión/ Pa', color= '¿Llueve?')
 grafi
 ```
 
-### Almacena en formato **pdf** el gráfico resultante en un
-
-fichero denominado `Ejercicio2.pdf`.
+### Almacena en formato **pdf** el gráfico resultante en un fichero denominado `Ejercicio2.pdf`.
 
 ```{r}
 ggsave('results/Ejercicio2.pdf', plot= grafi)
@@ -161,26 +139,20 @@ ggsave('results/Ejercicio2.pdf', plot= grafi)
 
 # Ejercicio 3
 
-### Carga el fichero `iris.tidy.Rdata` utilizando lo
-
-aprendido en la práctica 1.
+### Carga el fichero `iris.tidy.Rdata` utilizando lo aprendido en la práctica 1.
 
 ```{r}
 load('data/iris_tidy.Rdata')
 
 ```
 
-### Utiliza la función **str()** para ver qué variables
-
-contiene el dataset.
+### Utiliza la función **str()** para ver qué variables contiene el dataset.
 
 ```{r}
 str(iris.tidy)
 ```
 
-### Crea un objeto ggplot denominado `iris.grafico1` en el
-
-que esté definido el conjunto de datos `iris.tidy` alojado en el fichero `iris.tidy.RData` y un *aesthetics* en el que en el eje x esté definida la variable `Species` y en el eje y esté definida la variable `Value`.
+### Crea un objeto ggplot denominado `iris.grafico1` en el que esté definido el conjunto de datos `iris.tidy` alojado en el fichero `iris.tidy.RData` y un *aesthetics* en el que en el eje x esté definida la variable `Species` y en el eje y esté definida la variable `Value`.
 
 ```{r}
 
@@ -188,27 +160,21 @@ iris.grafico1<-ggplot(data=iris.tidy, aes(x=Species, y=Value))
 
 ```
 
-### Añade una capa que defina el objeto geométrico necesario para
-
-construir un gráfico de dispersión de las variables `Species` y `Value`.
+### Añade una capa que defina el objeto geométrico necesario para construir un gráfico de dispersión de las variables `Species` y `Value`.
 
 ```{r}
 iris.grafico1<- iris.grafico1+geom_point()
 iris.grafico1
 ```
 
-### Modifica el *aesthetics* de `iris.grafico1` para
-
-visualizar la variable categórica `Part` y almacénalo en `iris.grafico2`. A partir del objeto `iris.grafico2`, representa un gráfico de dispersión en el que se muestren los puntos dados por las variables `Species` y `Value`, y el color del punto se corresponda con el valor de la variable `Part`.
+### Modifica el *aesthetics* de `iris.grafico1` para visualizar la variable categórica `Part` y almacénalo en `iris.grafico2`. A partir del objeto `iris.grafico2`, representa un gráfico de dispersión en el que se muestren los puntos dados por las variables `Species` y `Value`, y el color del punto se corresponda con el valor de la variable `Part`.
 
 ```{r}
 iris.grafico2<- ggplot(data=iris.tidy, aes(x=Species, y=Value, color=Part))+ geom_point()
 iris.grafico2
 ```
 
-### Incluye información de la variable `Measure` haciendo dos
-
-gráficos de dispersión (dispuestos en filas) con **facet_grid()**, como en el apartado de introducción, para los dos valores que toma la variable `Measure`. Prueba a cambiar la disposición de los gráficos para que sea en columnas ¿Qué disposición, en filas o en columnas, permite comparar mejor los valores de las dos variables?
+### Incluye información de la variable `Measure` haciendo dos gráficos de dispersión (dispuestos en filas) con **facet_grid()**, como en el apartado de introducción, para los dos valores que toma la variable `Measure`. Prueba a cambiar la disposición de los gráficos para que sea en columnas ¿Qué disposición, en filas o en columnas, permite comparar mejor los valores de las dos variables?
 
 En filas:
 
@@ -225,9 +191,7 @@ iris.grafico2 + facet_grid( .~Measure )
 
 Bajo mi punto de vista, se compara mejor con la disposición de columnas, se ve más limpio y menos achatado.
 
-### Cambia ahora la capa **geom_point()** del gráfico
-
-anterior por la capa **geom_jitter()**. ¿Qué diferencia observas?
+### Cambia ahora la capa **geom_point()** del gráfico anterior por la capa **geom_jitter()**. ¿Qué diferencia observas?
 
 ```{r}
 graficofinal<- ggplot(data=iris.tidy, aes(x=Species, y=Value, color=Part))+ geom_jitter()+ facet_grid( .~Measure )
@@ -237,9 +201,7 @@ graficofinal
 
 Los puntos se encuentran desplazados, ya que el geom_jitter() evita el overplotting introduciendo ruido.
 
-### Almacena en formato **pdf** el gráfico resultante en un
-
-fichero denominado `Ejercicio3.pdf`.
+### Almacena en formato **pdf** el gráfico resultante en un fichero denominado `Ejercicio3.pdf`.
 
 ```{r}
 ggsave('results/Ejercicio3.pdf', graficofinal)
@@ -247,18 +209,14 @@ ggsave('results/Ejercicio3.pdf', graficofinal)
 
 # Ejercicio 4
 
-### Carga el fichero `Ejercicio4_Data.Rdata`. Examina las
-
-variables que tiene dicho dataset.
+### Carga el fichero `Ejercicio4_Data.Rdata`. Examina las variables que tiene dicho dataset.
 
 ```{r}
 load('data/Ejercicio4_Data.Rdata')
 str(DatosEjer4)
 ```
 
-### Representa un gráfico de puntos, en el que se muestre la fecha en el
-
-eje x y las ventas en el eje y. Queremos que los datos de cada fabricante sean de un color distinto. ¿Es este gráfico válido para evaluar la evolución de las ventas de cada fabricante?
+### Representa un gráfico de puntos, en el que se muestre la fecha en el eje x y las ventas en el eje y. Queremos que los datos de cada fabricante sean de un color distinto. ¿Es este gráfico válido para evaluar la evolución de las ventas de cada fabricante?
 
 ```{r}
 ggplot(data=DatosEjer4, aes(x=Fecha, y=Ventas, color=Fabricante)) +geom_point()
@@ -311,9 +269,7 @@ str(Experimento)
 ggplot(data=Experimento, aes(x=Dosis, y=Altura, linetype = Complemento, shape=Complemento)) + geom_point() + geom_line()
 ```
 
-### Crea otro gráfico añadiendo al gráfico anterior barras de error en cada punto. El error viene dado por la variable
-
-`Error_Altura`.
+### Crea otro gráfico añadiendo al gráfico anterior barras de error en cada punto. El error viene dado por la variable `Error_Altura`.
 
 ```{r}
 ggplot(data=Experimento, aes(x=Dosis, y=Altura, linetype = Complemento, shape=Complemento)) + geom_point() + geom_line() + geom_errorbar(aes(ymin=Altura - Error_Altura, ymax=Altura+ Error_Altura),width=0.1)
@@ -383,9 +339,7 @@ ggplot(data=ds, aes(x=factor(Year), y=MinTemp)) + geom_boxplot()
 ### Crea un gráfico en el que estén los gráficos de violín de la
 variable `MaxTemp` para cada uno de los años presentes en la
 variable `Year` del dataset. Añade en el mismo gráfico una
-capa de etiquetas de título (Distribución de temperaturas máximas por
-año), eje x (Año) y eje y (Temperatura (ºC)). Colorea el interior
-de los violines según la la variable `Year`.
+capa de etiquetas de título (Distribución de temperaturas máximas por año), eje x (Año) y eje y (Temperatura (ºC)). Colorea el interior de los violines según la la variable `Year`.
 
 ```{r}
 ggplot(data=ds, aes(x=factor(Year), y=MaxTemp, fill=factor(Year))) + geom_violin() + labs(title='Distribución de temperaturas máximas por año', x='Año', y='Temperatura (ºC)')
@@ -403,4 +357,67 @@ violines
 
 ```{r}
 ggsave('results/Ejercicio7.pdf', violines)
+```
+
+# Ejercicio 8
+
+### Descarga de la url “<http://assets.datacamp.com/blog_assets/chol.txt>” el dataset de Datacamp que utilizarás para este ejercicio y cárgalo en un dataframe .
+
+```{r}
+#download.file('http://assets.datacamp.com/blog_assets/chol.txt', destfile='data/datosurl.txt')
+datosurl<-read.table('data/datosurl.txt', header=T)
+```
+
+### Representa el histograma de la variable `HEIGHT` del
+dataframe cargado del fichero anterior.
+
+```{r}
+grafico_hist<- ggplot(datosurl, aes(x=HEIGHT)) + geom_histogram()
+grafico_hist
+```
+
+### Añade título (“Histograma de la variable Altura”), una etiqueta en el eje x (“Altura (cm)”) y una etiqueta en el eje y
+(“Frecuencia”).
+
+```{r}
+grafico_hist + labs(title='Histograma de la variable Altura', x= 'Altura (cm)', y='Frecuencia')
+```
+
+### Ajusta el rango de representación entre 155 y 195, además fuerza que el histograma tenga 20 *bins*.(usa parámetro
+`breaks`)
+
+```{r}
+ggplot(datosurl, aes(x=HEIGHT)) + geom_histogram(breaks=seq(155,195,2)) + labs(title='Histograma de la variable Altura', x= 'Altura (cm)', y='Frecuencia')
+
+```
+
+### Haz que las barras del histograma sean de color azul con una grado de transparencia del 50% y el contorno de color rojo
+
+```{r}
+grafix<-ggplot(datosurl, aes(x=HEIGHT)) + geom_histogram(aes(y=after_stat(density)),breaks=seq(155,195,2), fill='blue', color='red',alpha=0.5) + labs(title='Histograma de la variable Altura', x= 'Altura (cm)', y='Frecuencia')
+grafix
+```
+
+### Añade la curva de distribución estimada de color verde.
+
+```{r}
+
+grafix<-grafix + geom_density(color='green')
+grafix
+```
+
+### Representa el mismo histograma del apartado anterior para cada valor de la variable `MORT`, recuerda utilizar la función
+**facet_grid()**.
+
+```{r}
+grafix<- grafix + facet_grid(MORT ~.)
+grafix
+```
+
+### Almacena en formato **pdf** el gráfico resultante en un
+fichero denominado `Ejercicio8.pdf`.
+
+```{r}
+ggsave('results/Ejercicio8.pdf',grafix)
+
 ```
